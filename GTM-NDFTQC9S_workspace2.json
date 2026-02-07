@@ -1,0 +1,75 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2025-03-18 06:07:50",
+    "containerVersion": {
+        "path": "accounts/6273770137/containers/208906342/versions/0",
+        "accountId": "6273770137",
+        "containerId": "208906342",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/6273770137/containers/208906342",
+            "accountId": "6273770137",
+            "containerId": "208906342",
+            "name": "www.malesforfemalesllc.worpress.com",
+            "publicId": "GTM-NDFTQC9S",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1742278018554",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6273770137/containers/208906342/workspaces?apiLink=container",
+            "features": {
+                "supportUserPermissions": true,
+                "supportEnvironments": true,
+                "supportWorkspaces": true,
+                "supportGtagConfigs": false,
+                "supportBuiltInVariables": true,
+                "supportClients": false,
+                "supportFolders": true,
+                "supportTags": true,
+                "supportTemplates": true,
+                "supportTriggers": true,
+                "supportVariables": true,
+                "supportVersions": true,
+                "supportZones": true,
+                "supportTransformations": false
+            },
+            "tagIds": [
+                "GTM-NDFTQC9S"
+            ]
+        },
+        "builtInVariable": [
+            {
+                "accountId": "6273770137",
+                "containerId": "208906342",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "6273770137",
+                "containerId": "208906342",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "6273770137",
+                "containerId": "208906342",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "6273770137",
+                "containerId": "208906342",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "6273770137",
+                "containerId": "208906342",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "1742278070354",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6273770137/containers/208906342/versions/0?apiLink=version"
+    }
+}

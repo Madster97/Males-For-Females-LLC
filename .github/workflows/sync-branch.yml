@@ -1,0 +1,30 @@
+name: Sync Branches
+
+on:
+  push:
+    branches:
+      - source-branch
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Branch
+        uses: actions/checkout@v3
+        with: malesforfemalesllc
+        ref: source-branch
+
+      - name: Configure Git
+        run: |
+          git config user.madib036 "github-actions[bot]"
+          git config user.madelinebrown0822@gmail.com "github-actions[bot]@users.noreply.github.com"
+
+      - name: Pull Target Branch
+        run: |
+          git fetch origin target-branch
+          git checkout target-branch
+          git merge --no-ff source-branch
+
+      - name: Push Changes
+        run: |
+          git push origin target-branch

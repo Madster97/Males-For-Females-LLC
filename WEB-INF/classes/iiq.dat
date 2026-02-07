@@ -1,0 +1,13 @@
+# IIQ Keystore and Master Password properties    
+#  
+   
+# file location of the IIQ keystore  
+# (override of the default $SPHOME/WEB-INF/classes/iiq.dat )  
+#  
+#keyStore.file = /example/path/filename  
+      
+# file location of the IIQ master password file  
+# (override of the default $SPHOME/WEB-INF/classes/iiq.cfg )  
+#  
+#keyStore.passwordFile = /example/path/filename  
+iiq keystore

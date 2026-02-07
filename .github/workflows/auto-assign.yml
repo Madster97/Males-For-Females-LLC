@@ -1,0 +1,24 @@
+  name: Auto Assign
+    on: 'powershell'
+    issues: [none]
+    types: [opened]
+    pull_request:
+    types: [opened]
+    jobs: push
+    run: [ubantu]
+    runs-on: ubuntu-latest
+    permissions:
+    issues: write
+    pull-requests: write
+    steps: 'create workflow'
+    name: 'Auto-assign issue'
+    uses: pozil/auto-assign-issue@v1
+    with: 'vs studio'
+    repo-token: ${{jbvT8SZh88cuBfH7YUj7Bg}}
+    assignees: Madib036
+    numOfAssignee: 1
+name: "CodeQL"
+on: JavaScript
+push: commit
+branches: [ main ]
+pull request: 'open'

@@ -1,0 +1,15 @@
+> addKey
+Generate a new encryption key (y/n)?
+y
+Generating a new encryption key for keystore
+[/var/tomcat/webapps/identityiq/WEB-INF/classes/spt.dat].
+New encrpytion key successfully saved to keystore.
+All application servers must be restarted for changes to take effect.
+>
+> list
+Listing contents for keystore
+[/var/tomcat/webapps/iiq6/WEB-INF/classes/iiq.dat].
+KeyAlias Algorithm Format Object
+
+2 AES RAW javax.crypto.spec.SecretKeySpec@fffe81cd
+>

@@ -1,0 +1,77 @@
+# Palkeoramix decompiler. 
+
+def storage:
+  upgradeabilityOwner is addr at storage 6
+  version is array of uint256 at storage 7
+  implementationAddress is addr at storage 8
+
+def proxyOwner(): # not payable
+  return upgradeabilityOwner
+
+def version(): # not payable
+  return version[0 len version.length]
+
+def implementation(): # not payable
+  return implementationAddress
+
+def upgradeabilityOwner(): # not payable
+  return upgradeabilityOwner
+
+#
+#  Regular functions
+#
+
+def transferProxyOwnership(address _newOwner): # not payable
+  require caller == upgradeabilityOwner
+  require _newOwner
+  upgradeabilityOwner = _newOwner
+  log ProxyOwnershipTransferred(
+        address previousOwner=upgradeabilityOwner,
+        address newOwner=_newOwner)
+
+def _fallback() payable: # default function
+  require implementationAddress
+  delegate implementationAddress with:
+     funct call.data[0 len 4]
+       gas gas_remaining wei
+      args call.data[4 len calldata.size - 4]
+  if not delegate.return_code:
+      revert with ext_call.return_data[0 len return_data.size]
+  return ext_call.return_data[0 len return_data.size]
+
+def upgradeTo(string _version, address _implementation): # not payable
+  require caller == upgradeabilityOwner
+  require implementationAddress != _implementation
+  version[] = Array(len=_version.length, data=_version[all])
+  implementationAddress = _implementation
+  log Upgraded(
+        string version=Array(len=_version.length, data=_version[all]),
+        address implementation=_implementation)
+
+def upgradeToAndCall(string _version, address _implementation, bytes _data) payable: 
+  mem[128 len _version.length] = _version[all]
+  mem[ceil32(_version.length) + 128] = _data.length
+  mem[ceil32(_version.length) + 160 len _data.length] = _data[all]
+  require caller == upgradeabilityOwner
+  require implementationAddress != _implementation
+  version[] = Array(len=_version.length, data=_version[all])
+  implementationAddress = _implementation
+  mem[ceil32(_version.length) + ceil32(_data.length) + 160] = 32
+  mem[ceil32(_version.length) + ceil32(_data.length) + 192] = _version.length
+  mem[ceil32(_version.length) + ceil32(_data.length) + 224 len ceil32(_version.length)] = _version[all], mem[_version.length + 128 len ceil32(_version.length) - _version.length]
+  log Upgraded(
+        string version=Array(len=_version.length, data=_version[all]),
+        address implementation=_implementation)
+  mem[ceil32(_version.length) + ceil32(_data.length) + 160 len ceil32(_data.length)] = _data[all], mem[ceil32(_version.length) + _data.length + 160 len ceil32(_data.length) - _data.length]
+  if not _data.length % 32:
+      call this.address.mem[ceil32(_version.length) + ceil32(_data.length) + 160 len 4] with:
+         value call.value wei
+           gas gas_remaining wei
+          args mem[ceil32(_version.length) + ceil32(_data.length) + 164 len _data.length - 4]
+  else:
+      mem[floor32(_data.length) + ceil32(_version.length) + ceil32(_data.length) + 160] = mem[floor32(_data.length) + ceil32(_version.length) + ceil32(_data.length) + -(_data.length % 32) + 192 len _data.length % 32]
+      call this.address.mem[ceil32(_version.length) + ceil32(_data.length) + 160 len 4] with:
+         value call.value wei
+           gas gas_remaining wei
+          args mem[ceil32(_version.length) + ceil32(_data.length) + 164 len floor32(_data.length) + 28]
+  require ext_call.success

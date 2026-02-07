@@ -1,0 +1,6 @@
+repo init --partial-clone --no-use-superproject -b android-latest-release -u https://android.googlesource.com/platform/manifest
+
+$ mkdir WORKING_DIRECTORY
+cd WORKING_DIRECTORY
+
+$ repo sync -c -j8

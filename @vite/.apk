@@ -1,0 +1,12 @@
+npm install -g stremio-addon-sdk
+git clone git@bitbucket.org:madib0361/malesforfemalesllc.link.git
+before_install:
+  - sudo apt-get -y install libxml2-dev
+addons:
+  apt:
+update: true 
+!/bin/sh
+set -ex
+wget https://protobuf.googlecode.com/files/protobuf-2.4.1.tar.gz
+tar -xzvf protobuf-2.4.1.tar.gz
+cd protobuf-2.4.1 && ./configure --prefix=/usr && make && sudo make install

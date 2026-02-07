@@ -1,0 +1,4 @@
+gcloud iam service-accounts list  
+# List service accounts
+gcloud projects add-iam-policy-binding [48494413448_teak-brook-447900-h9] \ —member="user:madib036@malesforfemalesllc.online" \  --role=roles/[globaladministrator_teak-brook-447900-h9]  
+# Add IAM role

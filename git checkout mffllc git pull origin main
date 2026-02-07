@@ -1,0 +1,1 @@
+npx @upstash/qstash-cli@latest dev

@@ -1,0 +1,17 @@
+npm install -g stremio-addon-sdk
+git clone git@bitbucket.org:madib0361/malesforfemalesllc.link.git
+npm install --save @primer/primitives
+git clone https://x-token-auth: ATCTT3xFfGNOLWOPSI-eL11ncCGNixXgv3JE8co4tGkKWEOZt6wGobAI_SfugXDLGs0hmFcqIqn2GpLe0cacQbHcrdpBGIKOrWY GcYaqHqhZbclierCSU50FZjtxiC3fExojGkg3PYg9xmnmjStKEa4Lv6umvf1gaTduA9VkjYxFPoNe66T 1JXg=F10E93B6@bitbucket.org/madib0361/malesforfemalesllc.link.git
+npm install -g stremio-addon-sdk
+git clone git@bitbucket.org:madib0361/malesforfemalesllc.link.git
+before_install:
+  - sudo apt-get -y install libxml2-dev
+addons:
+  apt:
+update: true 
+!/bin/sh
+set -ex
+wget https://protobuf.googlecode.com/files/protobuf-2.4.1.tar.gz
+tar -xzvf protobuf-2.4.1.tar.gz
+cd protobuf-2.4.1 && ./configure --prefix=/usr && make && sudo make install
+Set-ExecutionPolicy Bypass -Scope Process

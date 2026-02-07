@@ -1,0 +1,26 @@
+try {
+ URL url = new URL("https://{authenticationurl}/services/cso-auth");
+ HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+ conn.setDoOutput(true);
+ conn.setRequestMethod("POST");
+ conn.setRequestProperty("Content-Type", "application/json");
+ conn.setRequestProperty("Accept", "application/xml"); // can also return json
+ String authJson = "{\"loginId\": \"yourpacerusername\","
++ "\"password\": \"yourpacerpassword\","
++ "\"otpCode\": \"youronetimepasscode"}";
+ OutputStream os = conn.getOutputStream();
+ os.write(authJson.getBytes());
+ os.flush();
+ BufferedReader reader = new BufferedReader(new
+InputStreamReader((conn.getInputStream())));
+ // responseBody will contain the response in either JSON or XML format
+ String responseLine;
+ String responseBody = "";
+ while ((responseLine = reader.readLine()) != null) {
+ responseBody += responseLine;
+ }
+}
+catch (IOException e) {
+ e.printStackTrace();
+ System.exit(-1);
+)

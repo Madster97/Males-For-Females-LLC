@@ -1,0 +1,21 @@
+<meta-data
+    android:name="com.google.android.gms.wallet.api.enabled"
+    android:value="true" />{
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  }
+}{
+    ...
+    "proxima-github": {
+      "type": "http",
+      "url": "https://copilot-api.octocorp.ghe.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:github_mcp_pat}"
+      }
+    },
+    ...
+}https://api.githubcopilot.com/mcp/
+>

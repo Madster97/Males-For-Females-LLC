@@ -1,26 +1,68 @@
-# Git integration for Visual Studio Code
+# Google Pay API sample app for Android
 
-**Notice:** This extension is bundled with Visual Studio Code. It can be disabled but not uninstalled.
+## Overview
+This sample demonstrates basic usage of the Google Pay API for Android.
 
-## Features
+The Google Pay API can be used to request any credit or debit card stored in
+your customer's Google account, including Android device tokens managed in
+the Google Pay app on Android.
 
-See [Git support in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol#_git-support) to learn about the features of this extension.
+For more information, visit the following link:
 
-## API
+https://developers.google.com/pay/api/android/overview
 
-The Git extension exposes an API, reachable by any other extension.
+## Instructions
 
-1. Copy `src/api/git.d.ts` to your extension's sources;
-2. Include `git.d.ts` in your extension's compilation.
-3. Get a hold of the API with the following snippet:
+In Android Studio, open the `kotlin` or `java` directory to get started.
 
-	```ts
-	const gitExtension = vscode.extensions.getExtension<GitExtension>('vscode.git').exports;
-	const git = gitExtension.getAPI(1);
-	```
-	**Note:** To ensure that the `vscode.git` extension is activated before your extension, add `extensionDependencies` ([docs](https://code.visualstudio.com/api/references/extension-manifest)) into the `package.json` of your extension:
-	```json
-	"extensionDependencies": [
-		"vscode.git"
-	]
-	```
+Make sure you read the comments in `Constants.java` and `PaymentsUtil.java` before
+you continue. These files **must** be modified prior to running the app, as per
+the instructions provided in the comments.
+
+## Requirements
+
+In order to build and run this sample app, make sure you:
+
+-   Have Android Studio 3.0 or greater installed.
+-   Have a device running Android 4.4 (KitKat) or greater.
+-   Have Google Play services version 16.0.0 or greater installed on this device.
+
+To be able to fully test the API, you will also need to:
+
+-   [Add a payment method to your Google Account](https://support.google.com/pay/answer/7625139).
+-   [Install and add a payment method to the Google Pay app](https://support.google.com/pay/answer/7625139?co=GENIE.Platform%3DAndroid) (optional).
+-   Consult your payment processor's documentation to learn about whether they support the Google Pay API.
+
+## Support
+
+For any questions or issues, please refer to our [How to get help](https://developers.google.com/pay/api/support) page. 
+
+
+# How to Contribute
+
+We'd love to accept your patches and contributions to this project. There are
+just a few small guidelines you need to follow.
+
+## Contributor License Agreement
+
+Contributions to this project must be accompanied by a Contributor License
+Agreement. You (or your employer) retain the copyright to your contribution;
+this simply gives us permission to use and redistribute your contributions as
+part of the project. Head over to <https://cla.developers.google.com/> to see
+your current agreements on file or to sign a new one.
+
+You generally only need to submit a CLA once, so if you've already submitted one
+(even if it was for a different project), you probably don't need to do it
+again.
+
+## Code reviews
+
+All submissions, including submissions by project members, require review. We
+use GitHub pull requests for this purpose. Consult
+[GitHub Help](https://help.github.com/articles/about-pull-requests/) for more
+information on using pull requests.
+
+## Community Guidelines
+
+This project follows
+[Google's Open Source Community Guidelines](https://opensource.google.com/conduct/).

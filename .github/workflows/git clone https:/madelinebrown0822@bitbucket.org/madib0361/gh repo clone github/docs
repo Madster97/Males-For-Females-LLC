@@ -1,0 +1,3 @@
+gh repo clone github/docs
+https://github.com/github/docs.git
+git@github.com:github/docs.git

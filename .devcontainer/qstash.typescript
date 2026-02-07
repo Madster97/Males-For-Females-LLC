@@ -1,0 +1,2 @@
+npx @upstash/qstash-cli@latest dev
+http://localhost:8080

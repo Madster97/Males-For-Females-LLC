@@ -1,0 +1,60 @@
+---
+name: Build Metrics Report
+on: # yamllint disable-line rule:truthy
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 2 * *" # Runs at 00:00 UTC on 2nd day of the month - to account for GA4 reporting latency
+
+env:
+  PY_VERSION: "3.10"
+  POETRY_VERSION: "1.7.1"
+
+jobs:
+  fetch-report:
+    defaults:
+      run:
+        working-directory: metrics
+    runs-on: ubuntu-latest
+    name: Fetch Reports
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Set up Python ${{ env.PY_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+            python-version: ${{ env.PY_VERSION }}
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+            poetry-version: ${{ env.POETRY_VERSION }}
+
+      - name: Setup a local virtual environment (if no poetry.toml file)
+        run: |
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+      - uses: actions/cache@v4
+        name: Define a cache for the virtual environment based on the dependencies lock file
+        with:
+          path: ./.venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install Dependencies
+        run: |
+            poetry env use ${{ env.PY_VERSION }}
+            poetry install
+
+      - name: Retrieve the credentials and decode to a file
+        env:
+            GA_CREDENTIALS_JSON: ${{ secrets.GA_CREDENTIALS_JSON }}
+        run: |
+            echo $GA_CREDENTIALS_JSON | base64 --decode > datagov_metrics/credentials.json            
+      - name: Run Python script
+        env:
+          AWS_ACCESS_KEY_ID_METRICS: ${{ secrets.AWS_ACCESS_KEY_ID_METRICS }}
+          AWS_SECRET_ACCESS_KEY_METRICS: ${{ secrets.AWS_SECRET_ACCESS_KEY_METRICS }}
+          AWS_DEFAULT_REGION: us-gov-west-1
+        run: |
+            poetry run python datagov_metrics

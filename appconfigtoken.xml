@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<managedAppConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://storage.googleapis.com/appconfig-media/appconfigschema.xsd">
+  <version>1</version>
+  <bundleId>com.google.chrome.ios</bundleId>
+  <dict>
+    <string keyName="CloudManagementEnrollmentToken">
+      <defaultValue>
+        <value>601c23c6-3af8-4c0b-a6e1-c338822fede4</value>
+      </defaultValue>
+    </string>
+  </dict>
+  <presentation defaultLocale="en-US">
+    <field keyName="CloudManagementEnrollmentToken" type="input">
+      <label>
+        <language value="en-US">The enrollment token of cloud policy on desktop</language>
+      </label>
+      <description>
+        <language value="en-US">Setting the policy means Chromium tries to register itself with Chrome Browser Cloud Management. The value of this policy is an enrollment token you can retrieve from the Google Admin console.
+
+See https://support.google.com/chrome/a/answer/9301891?ref_topic=9301744 for details.</language>
+      </description>
+    </field>
+  </presentation>
+</managedAppConfiguration>

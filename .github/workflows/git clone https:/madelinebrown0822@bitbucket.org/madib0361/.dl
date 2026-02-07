@@ -1,0 +1,1 @@
+./configure --with-intl=[small-icu,full-icu] --with-icu-source=/path/to/icu.tgz

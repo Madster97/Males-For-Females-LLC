@@ -1,0 +1,7 @@
+Create a TXT record in your DNS configuration for the following hostname:
+	_gh-malesforfemalesllconline-e.malesforfemalesllc.online
+.malesforfemalesllc.link
+Use this code for the value of the TXT record:
+	c4aa49a666
+Please note that the code will expire in 7 days.
+Wait until your DNS configuration changes. This could take up to 72 hours to propagate.

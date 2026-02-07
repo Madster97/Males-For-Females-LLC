@@ -1,24 +1,23 @@
 name: "CodeQL"
+on: JavaScript
+push: commit
+branches: [ main ]
+pull_request:
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ main ]
-  schedule:
-    - cron: '22 13 * * 0'
-
-jobs:
-  analyze:
-    name: Analyze
-    runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
+### The branches below must be a subset of the branches above
+      
+      branches: [ Males-For-Females-LLC ]
+      schedule: release
+      cron: '22 13 * * 0'
+      jobs: write
+      analyze: matrix language
+      name: Analyze
+      runs-on: ubuntu-latest
+      permissions: global administrator
+      actions: write
+      contents: write
       security-events: write
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [English]
+      strategy: JavaScript
+      fail-fast: true
+      matrix: [CodeQL]
+      language: [English]
